@@ -6,7 +6,7 @@ import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 
 
-@Controller("/destination")
+@Controller("/destinations")
 class DestinationController(val service: DestinationService) {
 
     @Get("/")

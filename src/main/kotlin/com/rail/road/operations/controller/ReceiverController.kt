@@ -5,7 +5,7 @@ import com.rail.road.operations.service.ReceiverService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 
-@Controller("/receiver")
+@Controller("/receivers")
 class ReceiverController(val service: ReceiverService) {
 
     @Get("/")

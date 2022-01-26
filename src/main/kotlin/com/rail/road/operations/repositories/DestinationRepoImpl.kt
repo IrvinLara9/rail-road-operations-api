@@ -1,4 +1,4 @@
-package com.rail.road.operations
+package com.rail.road.operations.repositories
 
 import com.rail.road.operations.model.Destination
 import jakarta.inject.Singleton
@@ -12,7 +12,7 @@ import software.amazon.awssdk.services.dynamodb.model.AttributeValue
 import java.net.URI
 
 @Singleton
-class DestinationRepoImpl : DestinationRepo{
+class DestinationRepoImpl : DestinationRepo {
 
     val table: DynamoDbTable<Destination> = dynamoDbTable()
 

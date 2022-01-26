@@ -1,4 +1,4 @@
-package com.rail.road.operations
+package com.rail.road.operations.repositories
 
 import com.rail.road.operations.model.Destination
 

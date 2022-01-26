@@ -29,5 +29,8 @@ aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
 --item '{"type":{"S":"receiver"}, "name": {"S": "UPS"}}'
 
+aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
+--item '{"type":{"S":"receiver"}, "name": {"S": "Old Dominion"}}'
+
 # Disply all values in table
 aws dynamodb scan --endpoint http://localhost:8000  --table-name Train

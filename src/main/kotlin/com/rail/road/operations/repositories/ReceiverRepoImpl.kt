@@ -76,12 +76,4 @@ class ReceiverRepoImpl : ReceiverRepo {
             .table("Train", TableSchema.fromBean(Receiver::class.java))
     }
 
-    private fun getKey(name: String): Key? {
-        val key = Key.builder()
-            .partitionValue(AttributeValue.builder().s("receiver").build())
-            .sortValue(AttributeValue.builder().s(name).build())
-            .build()
-        return key
-    }
-
 }

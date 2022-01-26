@@ -30,7 +30,7 @@ class DestinationRepoImpl : DestinationRepo {
             .partitionValue(AttributeValue.builder().s("destination").build())
             .sortValue(AttributeValue.builder().s(name).build())
             .build()
-        return table.getItem { r -> r.key(key) }
+        return table.getItem { r -> r.  key(key) }
     }
 
     override fun save(destination: Destination) {

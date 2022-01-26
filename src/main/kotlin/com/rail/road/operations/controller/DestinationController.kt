@@ -27,4 +27,11 @@ class DestinationController(val service: DestinationService) {
         service.save(destination)
         return destination
     }
+
+    @Patch("/destination/{name}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    open fun update(destination: Destination, name: String) {
+        service.update(destination, name)
+    }
+
 }

@@ -8,4 +8,6 @@ interface DestinationService {
     fun getById(name: String): Destination
 
     fun save(destination: Destination)
+
+    fun update(destination: Destination, name: String)
 }

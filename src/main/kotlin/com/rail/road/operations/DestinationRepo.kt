@@ -12,5 +12,5 @@ interface DestinationRepo {
 
     fun deleteById(name: String): Boolean
 
-    fun update(destination: Destination): Boolean
+    fun update(destination: Destination)
 }

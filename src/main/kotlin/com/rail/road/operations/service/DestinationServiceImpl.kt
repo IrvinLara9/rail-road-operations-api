@@ -15,7 +15,7 @@ import java.net.URI
 
 
 @Singleton
-class DestinationServiceImpl (val repo: DestinationRepo): DestinationService {
+class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
 
 
     override fun findAll(): ArrayList<Destination> {
@@ -29,6 +29,11 @@ class DestinationServiceImpl (val repo: DestinationRepo): DestinationService {
 
     override fun save(destination: Destination) {
         repo.save(destination)
+    }
+
+    override fun update(destination: Destination, name: String) {
+        destination.name = name
+        repo.update(destination)
     }
 
 

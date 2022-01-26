@@ -9,7 +9,7 @@ import jakarta.inject.Singleton
 class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
 
 
-    override fun findAll(): ArrayList<Destination> {
+    override fun findAll(): List<Destination> {
         return repo.findAll()
     }
 
@@ -25,6 +25,10 @@ class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
     override fun update(destination: Destination, name: String) {
         destination.name = name
         repo.update(destination)
+    }
+
+    override fun deleteByName(name: String) {
+        repo.deleteByName(name)
     }
 
 

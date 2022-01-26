@@ -17,7 +17,7 @@ class DestinationController(val service: DestinationService) {
     @Get("/destination/{name}")
     open fun find(name: String): Destination {
 
-        return service.getById(name)
+        return service.getByName(name)
     }
 
     @Post("/destination/")

@@ -1,4 +1,4 @@
-package com.rail.road.operations
+package com.rail.road.operations.repositories
 
 import com.rail.road.operations.model.Destination
 import jakarta.inject.Singleton
@@ -30,9 +30,12 @@ class DestinationRepoImpl : DestinationRepo {
         return destinations
     }
 
-    override fun findById(name: String): Destination {
-        val key = getKey(name)
-        return table.getItem { r -> r.key(key) }
+    override fun findByName(name: String): Destination {
+        val key = Key.builder()
+            .partitionValue(AttributeValue.builder().s("destination").build())
+            .sortValue(AttributeValue.builder().s(name).build())
+            .build()
+        return table.getItem { r -> r.  key(key) }
     }
 
 
@@ -40,14 +43,17 @@ class DestinationRepoImpl : DestinationRepo {
         table.putItem(destination)
     }
 
-    override fun deleteById(name: String): Boolean {
-        TODO("Not yet implemented")
+    override fun deleteByName(name: String): Destination? {
+        val key = Key.builder()
+            .partitionValue(AttributeValue.builder().s("destination").build())
+            .sortValue(AttributeValue.builder().s(name).build())
+            .build()
+        return table.deleteItem { r -> r.key(key) }
     }
 
     override fun update(destination: Destination) {
         table.updateItem(destination)
     }
-
 
     private fun dynamoDbTable(): DynamoDbTable<Destination> {
 

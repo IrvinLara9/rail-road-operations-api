@@ -25,7 +25,7 @@ class DestinationRepoImpl : DestinationRepo {
         return destinations
     }
 
-    override fun findById(name: String): Destination {
+    override fun findByName(name: String): Destination {
         val key = Key.builder()
             .partitionValue(AttributeValue.builder().s("destination").build())
             .sortValue(AttributeValue.builder().s(name).build())
@@ -37,17 +37,17 @@ class DestinationRepoImpl : DestinationRepo {
         table.putItem(destination)
     }
 
-    override fun deleteById(name: String): Boolean {
-        TODO("Not yet implemented")
+    override fun deleteByName(name: String): Destination? {
+        val key = Key.builder()
+            .partitionValue(AttributeValue.builder().s("destination").build())
+            .sortValue(AttributeValue.builder().s(name).build())
+            .build()
+        return table.deleteItem { r -> r.key(key) }
     }
 
     override fun update(destination: Destination): Boolean {
         TODO("Not yet implemented")
     }
-
-
-
-
 
     private fun dynamoDbTable(): DynamoDbTable<Destination> {
 

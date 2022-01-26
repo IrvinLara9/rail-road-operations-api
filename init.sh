@@ -14,13 +14,13 @@ aws dynamodb create-table --endpoint http://localhost:8000 --table-name Train \
 
 # Insert
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
-    --item '{"type":{"S":"Destination"}, "name": {"S": "Chicago"}}'
+    --item '{"type":{"S":"destination"}, "name": {"S": "Chicago"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"Destination"}, "name": {"S": "Houston"}}'
+--item '{"type":{"S":"destination"}, "name": {"S": "Houston"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"Destination"}, "name": {"S": "LA"}}'
+--item '{"type":{"S":"destination"}, "name": {"S": "LA"}}'
 
 # Disply all values in table
 aws dynamodb scan --endpoint http://localhost:8000  --table-name Train

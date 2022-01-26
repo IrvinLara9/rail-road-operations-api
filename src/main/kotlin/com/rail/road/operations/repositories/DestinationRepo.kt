@@ -6,11 +6,11 @@ interface DestinationRepo {
 
     fun findAll(): ArrayList<Destination>
 
-    fun findById(name: String): Destination
+    fun findByName(name: String): Destination
 
     fun save(destination: Destination)
 
-    fun deleteById(name: String): Boolean
+    fun deleteByName(name: String): Destination?
 
     fun update(destination: Destination): Boolean
 }

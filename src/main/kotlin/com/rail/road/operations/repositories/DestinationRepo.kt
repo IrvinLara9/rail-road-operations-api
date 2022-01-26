@@ -4,7 +4,7 @@ import com.rail.road.operations.model.Destination
 
 interface DestinationRepo {
 
-    fun findAll(): ArrayList<Destination>
+    fun findAll(): List<Destination>
 
     fun findByName(name: String): Destination
 
@@ -12,5 +12,5 @@ interface DestinationRepo {
 
     fun deleteByName(name: String): Destination?
 
-    fun update(destination: Destination): Boolean
+    fun update(destination: Destination)
 }

@@ -15,16 +15,16 @@ import java.net.URI
 
 
 @Singleton
-class DestinationRepoImpl : DestinationRepo {
+class ReceiverRepoImpl : ReceiverRepo {
 
-    val table: DynamoDbTable<Destination> = dynamoDbTable()
+    val table: DynamoDbTable<Receiver> = dynamoDbTable()
 
-    override fun findAll(): List<Destination> {
-        val destinations = ArrayList<Destination>()
+    override fun findAll(): List<Receiver> {
+        val destinations = ArrayList<Receiver>()
         val queryConditional = QueryConditional
             .keyEqualTo(
                 Key.builder()
-                    .partitionValue("destination")
+                    .partitionValue("receiver")
                     .build()
             )
         val results = table.query(queryConditional).items().iterator();
@@ -33,35 +33,34 @@ class DestinationRepoImpl : DestinationRepo {
             destinations.add(results.next())
         }
         return destinations
-
     }
 
-    override fun findByName(name: String): Destination {
+    override fun findByName(name: String): Receiver {
         val key = Key.builder()
-            .partitionValue(AttributeValue.builder().s("destination").build())
+            .partitionValue(AttributeValue.builder().s("receiver").build())
             .sortValue(AttributeValue.builder().s(name).build())
             .build()
         return table.getItem { r -> r.key(key) }
     }
 
 
-    override fun save(destination: Destination) {
-        table.putItem(destination)
+    override fun save(receiver: Receiver) {
+        table.putItem(receiver)
     }
 
-    override fun deleteByName(name: String): Destination? {
+    override fun deleteByName(name: String): Receiver? {
         val key = Key.builder()
-            .partitionValue(AttributeValue.builder().s("destination").build())
+            .partitionValue(AttributeValue.builder().s("receiver").build())
             .sortValue(AttributeValue.builder().s(name).build())
             .build()
         return table.deleteItem { r -> r.key(key) }
     }
 
-    override fun update(destination: Destination) {
-        table.updateItem(destination)
+    override fun update(receiver: Receiver) {
+        table.updateItem(receiver)
     }
 
-    private fun dynamoDbTable(): DynamoDbTable<Destination> {
+    private fun dynamoDbTable(): DynamoDbTable<Receiver> {
 
         val region = Region.of("us-east-1")
 
@@ -74,7 +73,7 @@ class DestinationRepoImpl : DestinationRepo {
             .build()
 
         return dynamoDbClientEnhancedClient
-            .table("Train", TableSchema.fromBean(Destination::class.java))
+            .table("Train", TableSchema.fromBean(Receiver::class.java))
     }
 
 }

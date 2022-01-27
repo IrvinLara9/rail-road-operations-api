@@ -1,6 +1,5 @@
 package com.rail.road.operations.repositories
 
-import com.rail.road.operations.model.Destination
 import com.rail.road.operations.model.Receiver
 import jakarta.inject.Singleton
 import software.amazon.awssdk.enhanced.dynamodb.DynamoDbEnhancedClient
@@ -20,7 +19,7 @@ class ReceiverRepoImpl : ReceiverRepo {
     val table: DynamoDbTable<Receiver> = dynamoDbTable()
 
     override fun findAll(): List<Receiver> {
-        val destinations = ArrayList<Receiver>()
+        val receivers = ArrayList<Receiver>()
         val queryConditional = QueryConditional
             .keyEqualTo(
                 Key.builder()
@@ -30,9 +29,9 @@ class ReceiverRepoImpl : ReceiverRepo {
         val results = table.query(queryConditional).items().iterator();
 
         while (results.hasNext()) {
-            destinations.add(results.next())
+            receivers.add(results.next())
         }
-        return destinations
+        return receivers
     }
 
     override fun findByName(name: String): Receiver {

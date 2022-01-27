@@ -8,11 +8,9 @@ import jakarta.inject.Singleton
 @Singleton
 class ReceiverServiceImpl(val repo: ReceiverRepo) : ReceiverService {
 
-
     override fun findAll(): List<Receiver> {
         return repo.findAll()
     }
-
 
     override fun getByName(name: String): Receiver {
         return repo.findByName(name)
@@ -30,6 +28,5 @@ class ReceiverServiceImpl(val repo: ReceiverRepo) : ReceiverService {
     override fun deleteByName(name: String) {
         repo.deleteByName(name)
     }
-
 
 }

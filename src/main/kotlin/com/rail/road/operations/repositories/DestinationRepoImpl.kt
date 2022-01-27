@@ -33,7 +33,6 @@ class DestinationRepoImpl : DestinationRepo {
             destinations.add(results.next())
         }
         return destinations
-
     }
 
     override fun findByName(name: String): Destination {

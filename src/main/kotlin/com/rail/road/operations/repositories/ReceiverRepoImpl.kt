@@ -55,8 +55,8 @@ class ReceiverRepoImpl : ReceiverRepo {
         return table.deleteItem { r -> r.key(key) }
     }
 
-    override fun update(receiver: Receiver) {
-        table.updateItem(receiver)
+    override fun update(receiver: Receiver): Receiver {
+        return table.updateItem(receiver)
     }
 
     private fun dynamoDbTable(): DynamoDbTable<Receiver> {

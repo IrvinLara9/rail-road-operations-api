@@ -20,13 +20,17 @@ class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
         repo.save(destination)
     }
 
-    override fun update(destination: Destination, name: String) {
+    override fun update(destination: Destination, name: String): Destination {
         destination.name = name
-        repo.update(destination)
+
+        return repo.update(destination)
     }
 
-    override fun deleteByName(name: String) {
-        repo.deleteByName(name)
+    override fun deleteByName(name: String): Boolean {
+        if (repo.deleteByName(name) != null) {
+            return true
+        }
+        return false
     }
 
 }

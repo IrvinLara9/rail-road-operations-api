@@ -20,13 +20,17 @@ class ReceiverServiceImpl(val repo: ReceiverRepo) : ReceiverService {
         repo.save(receiver)
     }
 
-    override fun update(receiver: Receiver, name: String) {
+    override fun update(receiver: Receiver, name: String): Receiver {
         receiver.name = name
-        repo.update(receiver)
+
+        return repo.update(receiver)
     }
 
-    override fun deleteByName(name: String) {
-        repo.deleteByName(name)
+    override fun deleteByName(name: String): Boolean {
+        if (repo.deleteByName(name) != null) {
+            return true
+        }
+        return false
     }
 
 }

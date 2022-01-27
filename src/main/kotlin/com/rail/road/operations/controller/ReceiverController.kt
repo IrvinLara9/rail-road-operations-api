@@ -1,5 +1,6 @@
 package com.rail.road.operations.controller
 
+import com.rail.road.operations.model.Destination
 import com.rail.road.operations.model.Receiver
 import com.rail.road.operations.service.ReceiverService
 import io.micronaut.http.MediaType
@@ -21,20 +22,20 @@ class ReceiverController(val service: ReceiverService) {
     @Post("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    open fun find(receiver: Receiver): Receiver {
+    open fun save(receiver: Receiver): Receiver {
         service.save(receiver)
         return receiver
     }
 
     @Patch("/{name}")
     @Consumes(MediaType.APPLICATION_JSON)
-    open fun update(receiver: Receiver, name: String) {
-        service.update(receiver, name)
+    open fun update(receiver: Receiver, name: String): Receiver {
+        return service.update(receiver, name)
     }
 
     @Delete("/{name}")
-    open fun delete(name: String) {
-        service.deleteByName(name)
+    open fun delete(name: String): Boolean {
+        return service.deleteByName(name)
     }
 
 }

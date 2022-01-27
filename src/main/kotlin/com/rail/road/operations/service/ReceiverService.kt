@@ -1,5 +1,6 @@
 package com.rail.road.operations.service
 
+import com.rail.road.operations.model.Destination
 import com.rail.road.operations.model.Receiver
 
 interface ReceiverService {
@@ -10,8 +11,8 @@ interface ReceiverService {
 
     fun save(receiver: Receiver)
 
-    fun update(receiver: Receiver, name: String)
+    fun update(receiver: Receiver, name: String): Receiver
 
-    fun deleteByName(name: String)
+    fun deleteByName(name: String): Boolean
 
 }

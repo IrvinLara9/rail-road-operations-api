@@ -1,18 +1,19 @@
 package com.rail.road.operations.controller
 
 import com.rail.road.operations.model.Cart
-import com.rail.road.operations.model.Receiver
+import com.rail.road.operations.service.DestinationService
+import com.rail.road.operations.service.SortService
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.*
 
 @Controller("/sort")
-class SortController {
+class SortController(val sortService: SortService) {
 
     @Post("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     open fun sort(@Body carts: List<Cart>): List<Cart> {
-        return carts.sortedWith(compareBy(Cart::destination, Cart::receiver))
+        return sortService.sort(carts)
     }
 
 }

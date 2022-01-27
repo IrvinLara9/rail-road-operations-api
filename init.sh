@@ -14,23 +14,22 @@ aws dynamodb create-table --endpoint http://localhost:8000 --table-name Train \
 
 # Insert
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
-    --item '{"type":{"S":"destination"}, "name": {"S": "Chicago"}}'
+    --item '{"type":{"S":"destination"}, "name": {"S": "Chicago"}, "priority": {"N": "2"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"destination"}, "name": {"S": "Houston"}}'
+--item '{"type":{"S":"destination"}, "name": {"S": "Houston"}, "priority": {"N": "1"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"destination"}, "name": {"S": "LA"}}'
+--item '{"type":{"S":"destination"}, "name": {"S": "LA"}, "priority": {"N": "3"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"receiver"}, "name": {"S": "FedEx"}}'
-
-
-aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"receiver"}, "name": {"S": "UPS"}}'
+--item '{"type":{"S":"receiver"}, "name": {"S": "FedEx"}, "priority": {"N": "2"}}'
 
 aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
---item '{"type":{"S":"receiver"}, "name": {"S": "Old Dominion"}}'
+--item '{"type":{"S":"receiver"}, "name": {"S": "UPS"}, "priority": {"N": "1"}}'
+
+aws dynamodb put-item --endpoint http://localhost:8000  --table-name Train \
+--item '{"type":{"S":"receiver"}, "name": {"S": "Old Dominion"}, "priority": {"N": "3"}}'
 
 # Disply all values in table
 aws dynamodb scan --endpoint http://localhost:8000  --table-name Train

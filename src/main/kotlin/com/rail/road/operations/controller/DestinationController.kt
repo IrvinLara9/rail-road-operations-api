@@ -22,20 +22,21 @@ class DestinationController(val service: DestinationService) {
     @Post("/")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    open fun find(destination: Destination): Destination {
+    open fun save(destination: Destination): Destination {
         service.save(destination)
         return destination
     }
 
     @Patch("/{name}")
     @Consumes(MediaType.APPLICATION_JSON)
-    open fun update(destination: Destination, name: String) {
-        service.update(destination, name)
+    open fun update(destination: Destination, name: String): Destination {
+        return service.update(destination, name)
     }
 
     @Delete("/{name}")
-    open fun delete(name: String) {
-        service.deleteByName(name)
+    open fun delete(name: String): Boolean {
+        println("Im here on delete method")
+        return service.deleteByName(name)
     }
 
 }

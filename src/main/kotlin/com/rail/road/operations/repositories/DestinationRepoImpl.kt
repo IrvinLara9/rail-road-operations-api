@@ -49,6 +49,7 @@ class DestinationRepoImpl : DestinationRepo {
     }
 
     override fun deleteByName(name: String): Destination? {
+        println("Name eliminated: " + name)
         val key = Key.builder()
             .partitionValue(AttributeValue.builder().s("destination").build())
             .sortValue(AttributeValue.builder().s(name).build())
@@ -56,8 +57,8 @@ class DestinationRepoImpl : DestinationRepo {
         return table.deleteItem { r -> r.key(key) }
     }
 
-    override fun update(destination: Destination) {
-        table.updateItem(destination)
+    override fun update(destination: Destination): Destination {
+        return table.updateItem(destination)
     }
 
     private fun dynamoDbTable(): DynamoDbTable<Destination> {

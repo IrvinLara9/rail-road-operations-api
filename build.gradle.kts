@@ -36,6 +36,7 @@ dependencies {
     implementation("io.micronaut:micronaut-validation")
     implementation("software.amazon.awssdk:dynamodb")
     implementation("software.amazon.awssdk:dynamodb-enhanced")
+    implementation("com.google.code.gson:gson:2.8.9")
 
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 

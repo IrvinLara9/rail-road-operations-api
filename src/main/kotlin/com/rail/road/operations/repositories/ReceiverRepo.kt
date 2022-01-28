@@ -12,5 +12,5 @@ interface ReceiverRepo {
 
     fun deleteByName(name: String): Receiver?
 
-    fun update(receiver: Receiver)
+    fun update(receiver: Receiver): Receiver
 }

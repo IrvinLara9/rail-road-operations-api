@@ -10,7 +10,7 @@ interface DestinationService {
 
     fun save(destination: Destination)
 
-    fun update(destination: Destination, name: String): Destination
+    fun update(destination: Destination, name: String, priority: Int): Destination
 
     fun deleteByName(name: String): Boolean
 

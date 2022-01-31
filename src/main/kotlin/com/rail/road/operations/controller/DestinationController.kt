@@ -29,8 +29,8 @@ class DestinationController(val service: DestinationService) {
 
     @Patch("/{name}")
     @Consumes(MediaType.APPLICATION_JSON)
-    open fun update(destination: Destination, name: String): Destination {
-        return service.update(destination, name)
+    open fun update(destination: Destination, name: String, priority: Int): Destination {
+        return service.update(destination, name, priority)
     }
 
     @Delete("/{name}")

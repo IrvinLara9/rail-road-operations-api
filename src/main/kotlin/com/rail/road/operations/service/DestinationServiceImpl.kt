@@ -20,9 +20,9 @@ class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
         repo.save(destination)
     }
 
-    override fun update(destination: Destination, name: String): Destination {
+    override fun update(destination: Destination, name: String, priority: Int): Destination {
         destination.name = name
-
+        destination.priority = priority
         return repo.update(destination)
     }
 

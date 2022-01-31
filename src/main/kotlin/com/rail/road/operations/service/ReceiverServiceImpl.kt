@@ -20,7 +20,7 @@ class ReceiverServiceImpl(val repo: ReceiverRepo) : ReceiverService {
         repo.save(receiver)
     }
 
-    override fun update(receiver: Receiver, name: String): Receiver {
+    override fun update(receiver: Receiver, name: String, priority: Int): Receiver {
         receiver.name = name
 
         return repo.update(receiver)

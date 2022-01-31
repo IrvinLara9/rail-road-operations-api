@@ -11,7 +11,7 @@ interface ReceiverService {
 
     fun save(receiver: Receiver)
 
-    fun update(receiver: Receiver, name: String): Receiver
+    fun update(receiver: Receiver, name: String, priority: Int): Receiver
 
     fun deleteByName(name: String): Boolean
 

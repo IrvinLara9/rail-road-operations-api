@@ -29,8 +29,8 @@ class ReceiverController(val service: ReceiverService) {
 
     @Patch("/{name}")
     @Consumes(MediaType.APPLICATION_JSON)
-    open fun update(receiver: Receiver, name: String): Receiver {
-        return service.update(receiver, name)
+    open fun update(receiver: Receiver, name: String, priority: Int): Receiver {
+        return service.update(receiver, name, priority)
     }
 
     @Delete("/{name}")

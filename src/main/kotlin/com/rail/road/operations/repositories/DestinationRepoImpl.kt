@@ -44,8 +44,9 @@ class DestinationRepoImpl : DestinationRepo {
     }
 
 
-    override fun save(destination: Destination) {
+    override fun save(destination: Destination): Destination {
         table.putItem(destination)
+        return destination
     }
 
     override fun deleteByName(name: String): Destination? {

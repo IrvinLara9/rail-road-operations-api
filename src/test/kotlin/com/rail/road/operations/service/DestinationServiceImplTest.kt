@@ -8,31 +8,44 @@ import jakarta.inject.Inject
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestInstance
-import org.junit.jupiter.api.TestInstance.Lifecycle
-import org.mockito.Mockito
+
 import org.mockito.Mockito.*
-import java.util.*
 
 
 @MicronautTest
-@TestInstance(Lifecycle.PER_CLASS)
 internal class DestinationServiceImplTest {
 
     @Inject
     lateinit var service: DestinationService
+
     @Inject
     lateinit var repo: DestinationRepo
 
     @Test
     fun testFindAll() {
-        var all = service.findAll()
-        Assertions.assertEquals(all.size, 3)
+        `when`(repo.findAll()).thenReturn(listOf(Destination("", ""), Destination("", ""), Destination("", "")))
+
+        val all = service.findAll()
+
+        Assertions.assertEquals(3, all.size)
     }
 
-    @BeforeAll
-    fun before(){
-        Mockito.`when`(repo.findAll()).thenReturn(listOf(Destination("",""), Destination("","") ,Destination("","")))
+    @Test
+    fun getByName(name: String) {
+        `when`(repo.findByName(name)).thenReturn(Destination("Destination", name))
+
+        val one = service.getByName(name)
+
+        Assertions.assertEquals(name, one.name)
+    }
+
+    @Test
+    fun save(destination: Destination) {
+        `when`(repo.save(destination)).thenReturn(destination)
+
+        val saved = service.save(destination)
+
+        Assertions.assertEquals(destination, saved)
     }
 
     @MockBean(DestinationRepo::class)

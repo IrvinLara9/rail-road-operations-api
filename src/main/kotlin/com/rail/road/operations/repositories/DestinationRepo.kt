@@ -8,7 +8,7 @@ interface DestinationRepo {
 
     fun findByName(name: String): Destination
 
-    fun save(destination: Destination)
+    fun save(destination: Destination): Destination
 
     fun deleteByName(name: String): Destination?
 

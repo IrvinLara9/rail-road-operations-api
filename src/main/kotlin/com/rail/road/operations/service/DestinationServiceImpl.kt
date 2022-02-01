@@ -16,8 +16,8 @@ class DestinationServiceImpl(val repo: DestinationRepo) : DestinationService {
         return repo.findByName(name)
     }
 
-    override fun save(destination: Destination) {
-        repo.save(destination)
+    override fun save(destination: Destination): Destination {
+        return repo.save(destination)
     }
 
     override fun update(destination: Destination, name: String, priority: Int): Destination {

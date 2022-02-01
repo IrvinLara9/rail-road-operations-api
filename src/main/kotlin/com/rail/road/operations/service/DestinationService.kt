@@ -8,7 +8,7 @@ interface DestinationService {
 
     fun getByName(name: String): Destination
 
-    fun save(destination: Destination)
+    fun save(destination: Destination): Destination
 
     fun update(destination: Destination, name: String, priority: Int): Destination
 

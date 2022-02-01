@@ -38,6 +38,12 @@ dependencies {
     implementation("software.amazon.awssdk:dynamodb-enhanced")
     implementation("com.google.code.gson:gson:2.8.9")
 
+//    testAnnotationProcessor ("io.micronaut:micronaut-inject-java")
+//    testImplementation("org.junit.jupiter:junit-jupiter-api")
+//    testImplementation("io.micronaut.test:micronaut-test-junit5:3.0.5")
+//    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.7.2")
+    testImplementation ("org.mockito:mockito-core:3.+" )
+
     runtimeOnly("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 }
@@ -61,5 +67,8 @@ tasks {
             jvmTarget = "11"
         }
     }
+//    test {
+//        useJUnitPlatform()
+//    }
 }
 graalvmNative.toolchainDetection.set(false)

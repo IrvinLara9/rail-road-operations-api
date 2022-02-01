@@ -2,6 +2,7 @@ package com.rail.road.operations.controllers
 
 import com.google.gson.Gson
 import com.rail.road.operations.model.Destination
+import io.micronaut.context.annotation.Requires
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client

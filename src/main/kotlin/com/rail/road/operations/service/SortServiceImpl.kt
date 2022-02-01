@@ -10,9 +10,13 @@ import jakarta.inject.Singleton
 class SortServiceImpl(val destinationRepo: DestinationRepo, val receiverRepo: ReceiverRepo) : SortService {
 
     override fun sort(carts: List<Cart>): List<Cart> {
+
+        val receivers = receiverRepo.findAll().map { it.name to it.priority }.toMap()
+        val destinations = destinationRepo.findAll().map { it.name to it.priority }.toMap()
+
         carts.forEach {
-            it.destinationPriority = destinationRepo.findByName(it.destination).priority
-            it.receiverPriority = receiverRepo.findByName(it.receiver).priority
+            it.destinationPriority = destinations.get(it.destination)
+            it.receiverPriority = receivers.get(it.receiver)
         }
 
         return carts.sortedWith(compareBy(Cart::destinationPriority, Cart::receiverPriority))

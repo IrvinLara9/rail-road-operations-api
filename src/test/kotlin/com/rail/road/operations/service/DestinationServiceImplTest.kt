@@ -6,7 +6,6 @@ import io.micronaut.test.annotation.MockBean
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest
 import jakarta.inject.Inject
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 
 import org.mockito.Mockito.*
@@ -31,7 +30,7 @@ internal class DestinationServiceImplTest {
     }
 
     @Test
-    fun getByName() {
+    fun testGetByName() {
         val name = "someName"
         `when`(repo.findByName(name)).thenReturn(Destination("Destination", name))
 
@@ -41,12 +40,20 @@ internal class DestinationServiceImplTest {
     }
 
     @Test
-    fun save() {
+    fun testSave() {
         val destination: Destination = Destination(name = "coolName")
         `when`(repo.save(destination)).thenReturn(destination)
 
         val saved = service.save(destination)
 
+        Assertions.assertEquals(destination, saved)
+    }
+
+    @Test
+    fun testUpdate(){
+        val destination: Destination = Destination(name = "coolName")
+        `when`(repo.update(destination)).thenReturn(destination)
+        val saved = service.update(destination, name="coolName", priority = 1)
         Assertions.assertEquals(destination, saved)
     }
 

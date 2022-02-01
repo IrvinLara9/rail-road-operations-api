@@ -23,9 +23,7 @@ internal class DestinationServiceImplTest {
     @Test
     fun testFindAll() {
         `when`(repo.findAll()).thenReturn(listOf(Destination("", ""), Destination("", ""), Destination("", "")))
-
         val all = service.findAll()
-
         Assertions.assertEquals(3, all.size)
     }
 
@@ -33,9 +31,7 @@ internal class DestinationServiceImplTest {
     fun testGetByName() {
         val name = "someName"
         `when`(repo.findByName(name)).thenReturn(Destination("Destination", name))
-
         val one = service.getByName(name)
-
         Assertions.assertEquals(name, one.name)
     }
 
@@ -43,9 +39,7 @@ internal class DestinationServiceImplTest {
     fun testSave() {
         val destination: Destination = Destination(name = "coolName")
         `when`(repo.save(destination)).thenReturn(destination)
-
         val saved = service.save(destination)
-
         Assertions.assertEquals(destination, saved)
     }
 
@@ -56,6 +50,14 @@ internal class DestinationServiceImplTest {
         val saved = service.update(destination, name="coolName", priority = 1)
         Assertions.assertEquals(destination, saved)
     }
+
+    @Test
+    fun testDeleteByName() {
+        val name = "coolName"
+        service.deleteByName(name)
+        verify(repo, times(1)).deleteByName(name)
+    }
+
 
     @MockBean(DestinationRepo::class)
     fun destinationRepo(): DestinationRepo? {

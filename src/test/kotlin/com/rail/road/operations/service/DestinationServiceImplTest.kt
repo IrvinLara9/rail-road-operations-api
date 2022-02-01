@@ -31,7 +31,8 @@ internal class DestinationServiceImplTest {
     }
 
     @Test
-    fun getByName(name: String) {
+    fun getByName() {
+        val name = "someName"
         `when`(repo.findByName(name)).thenReturn(Destination("Destination", name))
 
         val one = service.getByName(name)
@@ -40,7 +41,8 @@ internal class DestinationServiceImplTest {
     }
 
     @Test
-    fun save(destination: Destination) {
+    fun save() {
+        val destination: Destination = Destination(name = "coolName")
         `when`(repo.save(destination)).thenReturn(destination)
 
         val saved = service.save(destination)

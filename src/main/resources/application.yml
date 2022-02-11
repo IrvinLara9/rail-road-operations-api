@@ -4,3 +4,18 @@ micronaut:
   server:
     cors:
       enabled: true
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        descriptions: true
+
+endpoints:
+  all:
+    port: 8081
+  info:
+    sensitive: false
+  prometheus:
+    sensitive: false
+    enabled: true

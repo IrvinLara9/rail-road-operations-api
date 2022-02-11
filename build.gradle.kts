@@ -37,6 +37,11 @@ dependencies {
     implementation("software.amazon.awssdk:dynamodb")
     implementation("software.amazon.awssdk:dynamodb-enhanced")
     implementation("com.google.code.gson:gson:2.8.9")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-core")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-statsd")
+    implementation("io.micronaut:micronaut-management")
+    implementation("io.micronaut.micrometer:micronaut-micrometer-registry-prometheus")
+
 
 //    testAnnotationProcessor ("io.micronaut:micronaut-inject-java")
 //    testImplementation("org.junit.jupiter:junit-jupiter-api")
